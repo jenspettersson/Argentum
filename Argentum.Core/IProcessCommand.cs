@@ -2,6 +2,6 @@
 {
     public interface IProcessCommand
     {
-        void Execute(ICommand command);
+        void Process(ICommand command);
     }
 }
