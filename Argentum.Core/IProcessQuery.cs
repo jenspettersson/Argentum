@@ -2,6 +2,6 @@
 {
     public interface IProcessQuery
     {
-        TResult Execute<TResult>(IQuery<TResult> query);
+        TResult Process<TResult>(IQuery<TResult> query);
     }
 }

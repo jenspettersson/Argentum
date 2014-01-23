@@ -35,14 +35,19 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1312.1622\lib\net40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.2.2.0.0\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SomeTestClass.cs" />
+    <Compile Include="DefaultQueryProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Argentum.Core\Argentum.Core.csproj">
-      <Project>{0783FC8F-7FC9-4001-ACCC-10DD8779F3A8}</Project>
+      <Project>{0783fc8f-7fc9-4001-accc-10dd8779f3a8}</Project>
       <Name>Argentum.Core</Name>
     </ProjectReference>
   </ItemGroup>

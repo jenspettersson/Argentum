@@ -33,12 +33,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
     <Compile Include="DefaultCommandProcessor.cs" />
+    <Compile Include="DefaultQueryProcessor.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IHandleCommand.cs" />
     <Compile Include="IHandleQuery.cs" />
@@ -46,7 +50,6 @@
     <Compile Include="IProcessQuery.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TinyIoC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
