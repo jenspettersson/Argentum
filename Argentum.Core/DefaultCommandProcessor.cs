@@ -1,20 +1,20 @@
-﻿using TinyIoC;
+﻿using StructureMap;
 
 namespace Argentum.Core
 {
 	public class DefaultCommandProcessor : IProcessCommand
 	{
-		private readonly TinyIoCContainer container;
+		private readonly IContainer _container;
 
-		public DefaultCommandProcessor(TinyIoCContainer container)
+		public DefaultCommandProcessor(IContainer container)
 		{
-			this.container = container;
+			this._container = container;
 		}
 
 		public void Process(ICommand command)
 		{
 			var handlerType = typeof (IHandleCommand<>).MakeGenericType(command.GetType());
-			dynamic handler = container.Resolve(handlerType);
+		    dynamic handler = _container.GetInstance(handlerType);
 
 			handler.HandleCommand((dynamic) command);
 		}

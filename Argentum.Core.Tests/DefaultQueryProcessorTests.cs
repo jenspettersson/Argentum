@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using StructureMap;
 using Xunit;
 
 namespace Argentum.Core.Tests
@@ -10,7 +11,7 @@ namespace Argentum.Core.Tests
         {
             //Todo: Mock container
 
-            var defaultQueryProcessor = new DefaultQueryProcessor();
+            var defaultQueryProcessor = new DefaultQueryProcessor(ObjectFactory.Container);
 
             bool wasProcessed = defaultQueryProcessor.Process(new TestQuery());
 
