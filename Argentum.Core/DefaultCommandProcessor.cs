@@ -1,22 +1,37 @@
-﻿using StructureMap;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using TinyIoC;
 
 namespace Argentum.Core
 {
 	public class DefaultCommandProcessor : IProcessCommand
 	{
-		private readonly IContainer _container;
-
-		public DefaultCommandProcessor(IContainer container)
-		{
-			this._container = container;
-		}
-
 		public void Process(ICommand command)
 		{
-			var handlerType = typeof (IHandleCommand<>).MakeGenericType(command.GetType());
-		    dynamic handler = _container.GetInstance(handlerType);
+            Type handlerType = typeof(IHandleCommand<>).MakeGenericType(command.GetType());
 
-			handler.HandleCommand((dynamic) command);
+            IEnumerable<dynamic> registeredHandlers = TinyIoCContainer.Current.ResolveAll(handlerType, includeUnnamed: true);
+
+            var handlers = registeredHandlers as dynamic[] ?? registeredHandlers.ToArray();
+
+            if (!handlers.Any())
+                throw new NoCommandHandlerFoundException(string.Format("No handler was registered for command {0}", command.GetType().FullName));
+
+            if (handlers.Count() > 1)
+                throw new MultipleCommandHandlersNotSupportedException("Can't have more than one command handler registered for each command!");
+
+            handlers[0].HandleCommand((dynamic)command);
 		}
 	}
+
+    public class MultipleCommandHandlersNotSupportedException : Exception
+    {
+        public MultipleCommandHandlersNotSupportedException(string message) : base(message) { }
+    }
+
+    public class NoCommandHandlerFoundException : Exception
+    {
+        public NoCommandHandlerFoundException(string message) : base(message) { }
+    }
 }

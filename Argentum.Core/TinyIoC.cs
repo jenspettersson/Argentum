@@ -3048,6 +3048,11 @@ namespace TinyIoC
             _RegisteredTypes.Remove(typeRegistration);
         }
 
+        public void ClearAll()
+        {
+            _RegisteredTypes.Clear();
+        }
+
         private ObjectFactoryBase GetDefaultObjectFactory(Type registerType, Type registerImplementation)
         {
 //#if NETFX_CORE

@@ -1,38 +1,37 @@
 ﻿using System;
-using StructureMap;
+using System.Collections.Generic;
+using System.Linq;
+using TinyIoC;
 
 namespace Argentum.Core
 {
-    using TinyIoC;
-
     public class DefaultQueryProcessor : IProcessQuery
     {
-        private readonly IContainer _container;
-
-        public DefaultQueryProcessor(IContainer container)
-        {
-            _container = container;
-        }
-
         public TResult Process<TResult>(IQuery<TResult> query)
         {
             Type handlerType = typeof(IHandleQuery<,>).MakeGenericType(query.GetType(), typeof(TResult));
 
-            dynamic handler = _container.GetInstance(handlerType);
+            IEnumerable<dynamic> registeredHandlers = TinyIoCContainer.Current.ResolveAll(handlerType, includeUnnamed: true);
 
-            return handler.HandleQuery((dynamic)query);
+            var handlers = registeredHandlers as dynamic[] ?? registeredHandlers.ToArray();
+            
+            if(!handlers.Any())
+                throw new NoQueryHandlerFoundException(string.Format("No handler was registered for query {0}", query.GetType().FullName));
+
+            if(handlers.Count() > 1)
+                throw new MultipleQueryHandlersNotSupportedException("Can't have more than one query handler registered for each query!");
+
+            return handlers[0].HandleQuery((dynamic)query);
         }
     }
 
-    public class TinyIOCQueryProcessor : IProcessQuery
+    public class MultipleQueryHandlersNotSupportedException : Exception
     {
-        public TResult Process<TResult>(IQuery<TResult> query)
-        {
-            Type handlerType = typeof(IHandleQuery<,>).MakeGenericType(query.GetType(), typeof(TResult));
-            
-            dynamic handler = TinyIoCContainer.Current.Resolve(handlerType);
+        public MultipleQueryHandlersNotSupportedException(string message) : base(message) { }
+    }
 
-            return handler.HandleQuery((dynamic) query);
-        }
+    public class NoQueryHandlerFoundException : Exception
+    {
+        public NoQueryHandlerFoundException(string message) : base(message) { }
     }
 }

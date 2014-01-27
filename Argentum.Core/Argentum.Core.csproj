@@ -40,7 +40,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrap.cs" />
     <Compile Include="DefaultCommandProcessor.cs" />
     <Compile Include="DefaultQueryProcessor.cs" />
     <Compile Include="ICommand.cs" />
