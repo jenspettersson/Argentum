@@ -19,14 +19,6 @@ namespace Argentum.Core.Tests
             testCommandHandler.WasHandled.Should().BeTrue();
         }
 
-        [Fact]
-        public void Should_throw_if_no_command_handler_are_registered_for_given_command()
-        {
-            var processor = new DefaultCommandProcessor();
-
-            Assert.Throws<NoCommandHandlerFoundException>(() => processor.Process(new TestCommand()));
-        }
-
         public void SetFixture(ContainerFixture data)
         {
             data.ClearContainer();

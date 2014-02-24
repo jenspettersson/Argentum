@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using TinyIoC;
 
 namespace Argentum.Core
@@ -11,14 +9,9 @@ namespace Argentum.Core
 		{
             Type handlerType = typeof(IHandleCommand<>).MakeGenericType(command.GetType());
 
-            IEnumerable<dynamic> registeredHandlers = TinyIoCContainer.Current.ResolveAll(handlerType, includeUnnamed: true);
+            dynamic handler = TinyIoCContainer.Current.Resolve(handlerType);
 
-            var handlers = registeredHandlers as dynamic[] ?? registeredHandlers.ToArray();
-
-            if (!handlers.Any())
-                throw new NoCommandHandlerFoundException(string.Format("No handler was registered for command {0}", command.GetType().FullName));
-            
-            handlers[0].HandleCommand((dynamic)command);
+            handler.HandleCommand((dynamic)command);
 		}
 	}
 

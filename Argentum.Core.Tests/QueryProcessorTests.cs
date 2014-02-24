@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 using TinyIoC;
 
@@ -19,14 +17,6 @@ namespace Argentum.Core.Tests
             var wasProcessed = processor.Process(new TestQuery());
 
             wasProcessed.Should().BeTrue();
-        }
-
-        [Fact]
-        public void Should_throw_if_no_query_handler_are_registered_for_given_query()
-        {
-            var processor = new DefaultQueryProcessor();
-
-            Assert.Throws<NoQueryHandlerFoundException>(() => processor.Process(new TestQuery()));
         }
 
         public void SetFixture(ContainerFixture data)
