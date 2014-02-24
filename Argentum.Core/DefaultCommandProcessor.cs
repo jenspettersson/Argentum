@@ -17,10 +17,7 @@ namespace Argentum.Core
 
             if (!handlers.Any())
                 throw new NoCommandHandlerFoundException(string.Format("No handler was registered for command {0}", command.GetType().FullName));
-
-            if (handlers.Count() > 1)
-                throw new MultipleCommandHandlersNotSupportedException("Can't have more than one command handler registered for each command!");
-
+            
             handlers[0].HandleCommand((dynamic)command);
 		}
 	}

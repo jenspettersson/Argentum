@@ -12,11 +12,6 @@
         }
     }
 
-    public class SecondTestCommandHandler : IHandleCommand<TestCommand>
-    {
-        public void HandleCommand(TestCommand command) { }
-    }
-
     public class TestQuery : IQuery<bool> { }
 
     public class TestQueryHandler : IHandleQuery<TestQuery, bool>
@@ -26,12 +21,9 @@
             return true;
         }
     }
-    
-    public class SecondTestQueryHandler : IHandleQuery<TestQuery, bool>
-    {
-        public bool HandleQuery(TestQuery query)
-        {
-            return true;
-        }
-    } 
+
+    public interface IInterface {}
+
+    public class ImplementationOne : IInterface{}
+    public class ImplementationTwo : IInterface{}
 }

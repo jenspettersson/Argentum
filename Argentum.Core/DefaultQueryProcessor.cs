@@ -18,16 +18,8 @@ namespace Argentum.Core
             if(!handlers.Any())
                 throw new NoQueryHandlerFoundException(string.Format("No handler was registered for query {0}", query.GetType().FullName));
 
-            if(handlers.Count() > 1)
-                throw new MultipleQueryHandlersNotSupportedException("Can't have more than one query handler registered for each query!");
-
             return handlers[0].HandleQuery((dynamic)query);
         }
-    }
-
-    public class MultipleQueryHandlersNotSupportedException : Exception
-    {
-        public MultipleQueryHandlersNotSupportedException(string message) : base(message) { }
     }
 
     public class NoQueryHandlerFoundException : Exception

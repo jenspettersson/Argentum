@@ -29,22 +29,6 @@ namespace Argentum.Core.Tests
             Assert.Throws<NoQueryHandlerFoundException>(() => processor.Process(new TestQuery()));
         }
 
-        [Fact]
-        public void Should_throw_if_multiple_query_handlers_are_registered_for_given_query()
-        {
-
-            TinyIoCContainer.Current.RegisterMultiple<IHandleQuery<TestQuery, bool>>(new List<Type>
-                {
-                    typeof(TestQueryHandler),
-                    typeof(SecondTestQueryHandler)
-                });
-            
-
-            var processor = new DefaultQueryProcessor();
-
-            Assert.Throws<MultipleQueryHandlersNotSupportedException>(() => processor.Process(new TestQuery()));
-        }
-
         public void SetFixture(ContainerFixture data)
         {
             data.ClearContainer();

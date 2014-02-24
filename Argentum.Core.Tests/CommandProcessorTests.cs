@@ -27,20 +27,6 @@ namespace Argentum.Core.Tests
             Assert.Throws<NoCommandHandlerFoundException>(() => processor.Process(new TestCommand()));
         }
 
-        [Fact]
-        public void Should_throw_if_multiple_command_handlers_are_registered_for_given_command()
-        {
-            TinyIoCContainer.Current.RegisterMultiple<IHandleCommand<TestCommand>>(new[]
-                {
-                    typeof(TestCommandHandler),
-                    typeof(SecondTestCommandHandler)
-                });
-
-            var processor = new DefaultCommandProcessor();
-
-            Assert.Throws<MultipleCommandHandlersNotSupportedException>(() => processor.Process(new TestCommand()));
-        }
-
         public void SetFixture(ContainerFixture data)
         {
             data.ClearContainer();

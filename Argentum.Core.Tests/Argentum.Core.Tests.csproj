@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenericRegistratorTests.cs" />
     <Compile Include="CommandProcessorTests.cs" />
     <Compile Include="ContainerFixture.cs" />
     <Compile Include="QueryProcessorTests.cs" />
