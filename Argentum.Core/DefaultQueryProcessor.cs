@@ -14,9 +14,4 @@ namespace Argentum.Core
             return handler.HandleQuery((dynamic)query);
         }
     }
-
-    public class NoQueryHandlerFoundException : Exception
-    {
-        public NoQueryHandlerFoundException(string message) : base(message) { }
-    }
 }

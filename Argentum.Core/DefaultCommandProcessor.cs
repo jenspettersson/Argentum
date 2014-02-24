@@ -14,14 +14,4 @@ namespace Argentum.Core
             handler.HandleCommand((dynamic)command);
 		}
 	}
-
-    public class MultipleCommandHandlersNotSupportedException : Exception
-    {
-        public MultipleCommandHandlersNotSupportedException(string message) : base(message) { }
-    }
-
-    public class NoCommandHandlerFoundException : Exception
-    {
-        public NoCommandHandlerFoundException(string message) : base(message) { }
-    }
 }
