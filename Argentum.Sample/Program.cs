@@ -9,9 +9,9 @@ namespace Argentum.Sample
         {
             var argentum = Core.Argentum.Initialize();
 
-            argentum.CommandProcessor.Process(new PublishMessage("Hello Argentum!"));
+            argentum.Process(new PublishMessage("Hello Argentum!"));
 
-            var dateTime = argentum.QueryProcessor.Process(new GetCurrentDate());
+            var dateTime = argentum.Process(new GetCurrentDate());
 
             Console.WriteLine("This is what I got: {0}!", dateTime);
 
