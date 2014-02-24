@@ -11,4 +11,14 @@ namespace Argentum.Sample.Commands
             Message = message;
         }
     }
+
+    public class RunPerformance : ICommand { }
+
+    public class RunPerformanceHandler : IHandleCommand<RunPerformance>
+    {
+        public void HandleCommand(RunPerformance command)
+        {
+            
+        }
+    }
 }

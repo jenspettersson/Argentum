@@ -15,8 +15,10 @@ namespace Argentum.Core.Tests
             registrator.RegisterFrom(typeof(TestCommandHandler).Assembly, typeof(IHandleCommand<>));
 
             var commandHandler = TinyIoCContainer.Current.Resolve<IHandleCommand<TestCommand>>();
+            var secondCommandHandler = TinyIoCContainer.Current.Resolve<IHandleCommand<SecondTestCommand>>();
 
             commandHandler.GetType().Should().Be<TestCommandHandler>();
+            secondCommandHandler.GetType().Should().Be<SecondTestCommandHandler>();
         }
 
         [Fact]

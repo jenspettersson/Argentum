@@ -22,22 +22,47 @@ namespace Argentum.Core
 
             types.AddRange(nonGenericTypes);
 
-            if(types.Count() > 1 && !allowMultipleImplementations)
+            if(DuplicateImplementationsExitsts(types) && !allowMultipleImplementations)
                 throw new MultipleImplementaionsNotAllowedException(string.Format("Multiple implementations of {0} is not allowed!", interfaceType.FullName));
 
             Register(interfaceType, lifestyle, types);
         }
 
+        private static bool DuplicateImplementationsExitsts(IEnumerable<Type> types)
+        {
+            var currentInterfaces = new List<Type>();
+
+            foreach (var type in types)
+            {
+                foreach (var @interface in type.GetInterfaces())
+                {
+                    if (currentInterfaces.Contains(@interface))
+                        return true;
+
+                    currentInterfaces.Add(@interface);
+                }
+                
+            }
+
+            return false;
+        }
+
         private static void Register(Type interfaceType, Lifestyle lifestyle, List<Type> types)
         {
-            if (types.Count() == 1)
+            if (!DuplicateImplementationsExitsts(types))
             {
-                var registerOptions = TinyIoCContainer.Current.Register(interfaceType, types.First());
-                if (lifestyle == Lifestyle.PerRequest)
-                    registerOptions.AsMultiInstance();
-                else
+                foreach (var type in types)
                 {
-                    registerOptions.AsSingleton();
+                    var typeInterface = type.GetInterfaces().First(x => x.Name == interfaceType.Name);
+
+
+                    var registerOptions = TinyIoCContainer.Current.Register(typeInterface, type);
+                    if (lifestyle == Lifestyle.PerRequest)
+                        registerOptions.AsMultiInstance();
+                    else
+                    {
+                        registerOptions.AsSingleton();
+                    }
                 }
             }
             else

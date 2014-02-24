@@ -12,6 +12,18 @@
         }
     }
 
+    public class SecondTestCommand : ICommand { }
+
+    public class SecondTestCommandHandler : IHandleCommand<SecondTestCommand>
+    {
+        public bool WasHandled { get; set; }
+
+        public void HandleCommand(SecondTestCommand command)
+        {
+            WasHandled = true;
+        }
+    }
+
     public class TestQuery : IQuery<bool> { }
 
     public class TestQueryHandler : IHandleQuery<TestQuery, bool>
