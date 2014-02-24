@@ -1,5 +1,6 @@
-﻿using System;
-using Argentum.Core;
+﻿using Argentum.Core;
+using Castle.MicroKernel.Registration;
+using Castle.Windsor;
 
 namespace Argentum.Sample
 {
@@ -7,43 +8,16 @@ namespace Argentum.Sample
     {
         static void Main()
         {
-            var messageBus = Core.Argentum.Initialize();
+            var container = new WindsorContainer();
 
-            messageBus.Process(new PublishMessage("Hello Argentum!"));
+            var argentum = Core.Argentum.Initialize();
 
-            var dateTime = messageBus.Process(new GetCurrentDate());
+            container.Register(Component.For<IArgentum>().Instance(argentum).LifestyleSingleton());
+            container.Register(Component.For<SampleApplication>());
 
-            Console.WriteLine("This is what I got: {0}!", dateTime);
+            var sampleApplication = container.Resolve<SampleApplication>();
 
-            Console.ReadLine();
-        }
-    }
-
-    public class GetCurrentDate : IQuery<DateTime> { }
-
-    public class CurrentDateQueryHandler : IHandleQuery<GetCurrentDate, DateTime>
-    {
-        public DateTime HandleQuery(GetCurrentDate query)
-        {
-            return DateTime.Now;
-        }
-    }
-
-    public class PublishMessage : ICommand
-    {
-        public string Message { get; set; }
-
-        public PublishMessage(string message)
-        {
-            Message = message;
-        }
-    }
-
-    public class PublishMessageHandler : IHandleCommand<PublishMessage>
-    {
-        public void HandleCommand(PublishMessage command)
-        {
-            Console.WriteLine(command.Message);
+            sampleApplication.DoSomething();
         }
     }
 }

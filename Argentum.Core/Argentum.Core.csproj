@@ -44,7 +44,6 @@
     <Compile Include="DefaultCommandProcessor.cs" />
     <Compile Include="DefaultQueryProcessor.cs" />
     <Compile Include="GenericRegistrator.cs" />
-    <Compile Include="IMessageBus.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IHandleCommand.cs" />
     <Compile Include="IHandleQuery.cs" />
