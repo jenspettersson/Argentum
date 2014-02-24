@@ -5,11 +5,8 @@ namespace Argentum.Core
 {
     public class Argentum
     {
-        public IProcessCommand CommandProcessor { get { return TinyIoCContainer.Current.Resolve<IProcessCommand>(); } }
-        public IProcessQuery QueryProcessor { get { return TinyIoCContainer.Current.Resolve<IProcessQuery>(); } }
-
         //Todo: Temporary
-        public static IBus Initialize()
+        public static IMessageBus Initialize()
         {
             var callingAssembly = Assembly.GetCallingAssembly();
 
@@ -21,7 +18,7 @@ namespace Argentum.Core
             registrator.RegisterFrom(callingAssembly, typeof(IHandleCommand<>));
             registrator.RegisterFrom(callingAssembly, typeof(IHandleQuery<,>));
 
-            return new Bus();
+            return new MessageBus();
         }
     }
 }

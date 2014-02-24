@@ -7,11 +7,11 @@ namespace Argentum.Sample
     {
         static void Main()
         {
-            var argentum = Core.Argentum.Initialize();
+            var messageBus = Core.Argentum.Initialize();
 
-            argentum.Process(new PublishMessage("Hello Argentum!"));
+            messageBus.Process(new PublishMessage("Hello Argentum!"));
 
-            var dateTime = argentum.Process(new GetCurrentDate());
+            var dateTime = messageBus.Process(new GetCurrentDate());
 
             Console.WriteLine("This is what I got: {0}!", dateTime);
 
