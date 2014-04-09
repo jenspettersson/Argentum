@@ -22,13 +22,13 @@ namespace Argentum.Core
 
             types.AddRange(nonGenericTypes);
 
-            if(DuplicateImplementationsExitsts(types) && !allowMultipleImplementations)
+            if(DuplicateImplementationsExists(types) && !allowMultipleImplementations)
                 throw new MultipleImplementaionsNotAllowedException(string.Format("Multiple implementations of {0} is not allowed!", interfaceType.FullName));
 
             Register(interfaceType, lifestyle, types);
         }
 
-        private static bool DuplicateImplementationsExitsts(IEnumerable<Type> types)
+        private static bool DuplicateImplementationsExists(IEnumerable<Type> types)
         {
             var currentInterfaces = new List<Type>();
 
@@ -49,7 +49,7 @@ namespace Argentum.Core
 
         private static void Register(Type interfaceType, Lifestyle lifestyle, List<Type> types)
         {
-            if (!DuplicateImplementationsExitsts(types))
+            if (!DuplicateImplementationsExists(types))
             {
                 foreach (var type in types)
                 {
