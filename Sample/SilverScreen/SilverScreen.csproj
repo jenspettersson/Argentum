@@ -39,7 +39,7 @@
     <Compile Include="Domain\BookableSeatStatus.cs" />
     <Compile Include="Domain\BookableShow.cs" />
     <Compile Include="AggregateBase.cs" />
-    <Compile Include="Application\Customers\CreateCustomer.cs" />
+    <Compile Include="Application.Customers\CreateCustomer.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="Domain\Booking.cs" />
     <Compile Include="Domain\Cinema.cs" />
