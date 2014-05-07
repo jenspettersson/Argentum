@@ -1,4 +1,4 @@
-﻿namespace SilverScreen.Domain
+﻿namespace SilverScreen.Domain.Booking
 {
 	public class Seat
 	{

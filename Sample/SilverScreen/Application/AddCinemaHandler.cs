@@ -1,5 +1,6 @@
 ﻿using Argentum.Core;
 using SilverScreen.Domain;
+using SilverScreen.Domain.Cinema;
 
 namespace SilverScreen.Application
 {
