@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
-using FluentAssertions;
+﻿using FluentAssertions;
 using TinyIoC;
 using Xunit;
 
