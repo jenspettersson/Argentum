@@ -1,9 +1,8 @@
 ﻿using System;
 using TinyIoC;
-
 namespace Argentum.Core
 {
-	public class DefaultCommandProcessor : IProcessCommand
+    public class DefaultCommandProcessor : IProcessCommand
 	{
 		public void Process(ICommand command)
 		{
@@ -13,15 +12,5 @@ namespace Argentum.Core
 
             handler.HandleCommand((dynamic)command);
 		}
-
-	    public void Commit()
-	    {
-	        throw new NotImplementedException();
-	    }
-
-	    public void Rollback()
-	    {
-	        throw new NotImplementedException();
-	    }
 	}
 }

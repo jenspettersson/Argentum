@@ -57,7 +57,8 @@
     <Compile Include="Domain\Cinema\CinemaAdded.cs" />
     <Compile Include="Domain\Cinema\CinemaState.cs" />
     <Compile Include="IAggregate.cs" />
-    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IDomainEventStorage.cs" />
+    <Compile Include="Infrastructure\IDomainRepository.cs" />
     <Compile Include="IState.cs" />
     <Compile Include="Domain\Booking\Booking.cs" />
     <Compile Include="Domain\Cinema\Cinema.cs" />

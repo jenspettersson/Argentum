@@ -5,15 +5,11 @@ namespace Argentum.Core
 {
     public interface IArgentum
     {
-        void Raise(IEvent evt);
-        void Process(ICommand command);
-        TResult Process<TResult>(IQuery<TResult> query);
     }
 
     public class Argentum : IArgentum
     {
-        //Todo: Temporary
-        public static IArgentum Initialize()
+        public static IBus Initialize()
         {
             var callingAssembly = Assembly.GetCallingAssembly();
 
@@ -22,35 +18,10 @@ namespace Argentum.Core
             registrator.RegisterFrom(callingAssembly, typeof(IHandleQuery<,>));
             registrator.RegisterFrom(callingAssembly, typeof(IHandleEvent<>), allowMultipleImplementations: true);
 
-            return new Argentum(new DirectBus(), new DefaultQueryProcessor(), new DefaultEventRaiser());
-        }
+            TinyIoCContainer.Current.Register<IProcessMessages, MessageProcessor>().AsSingleton();
+            TinyIoCContainer.Current.Register<IBus, DirectBus>().AsSingleton();
 
-        private readonly IProcessCommand _commandProcessor;
-        private readonly IProcessQuery _queryProcessor;
-        private readonly IRaiseEvent _eventRaiser;
-
-        public Argentum(IProcessCommand commandProcessor, IProcessQuery queryProcessor, IRaiseEvent eventRaiser)
-        {
-            _commandProcessor = commandProcessor;
-            _queryProcessor = queryProcessor;
-            _eventRaiser = eventRaiser;
-        }
-
-        public void Raise(IEvent evt)
-        {
-            _eventRaiser.Raise(evt);
-        }
-
-        public void Process(ICommand command)
-        {
-            _commandProcessor.Process(command);
-
-            _commandProcessor.Commit();
-        }
-
-        public TResult Process<TResult>(IQuery<TResult> query)
-        {
-            return _queryProcessor.Process(query);
+            return TinyIoCContainer.Current.Resolve<IBus>();
         }
     }
 }

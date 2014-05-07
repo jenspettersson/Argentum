@@ -12,6 +12,11 @@ namespace SilverScreen
             return _changes;
         }
 
+        public void Clear()
+        {
+            _changes.Clear();
+        }
+
         protected TState State;
         protected AggregateBase()
         {

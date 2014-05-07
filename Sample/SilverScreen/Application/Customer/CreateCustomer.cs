@@ -1,5 +1,6 @@
 ﻿using Argentum.Core;
 using SilverScreen.Domain;
+using SilverScreen.Infrastructure;
 
 namespace SilverScreen.Application.Customer
 {
@@ -17,9 +18,18 @@ namespace SilverScreen.Application.Customer
 
     public class CreateCustomerHandler : IHandleCommand<CreateCustomer>
     {
+        private readonly IDomainRepository _repository;
+
+        public CreateCustomerHandler(IDomainRepository repository)
+        {
+            _repository = repository;
+        }
+
         public void HandleCommand(CreateCustomer command)
         {
-            Domain.Customer.Create(command.Name, command.Adress);
+            var customer = Domain.Customer.Create(command.Name, command.Adress);
+
+            _repository.Save(customer);
         }
     }
 

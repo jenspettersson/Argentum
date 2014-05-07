@@ -8,5 +8,6 @@ namespace SilverScreen
     {
         Guid Id { get; }
         IEnumerable<IEvent> GetUncommittedEvents();
+        void Clear();
     }
 }
