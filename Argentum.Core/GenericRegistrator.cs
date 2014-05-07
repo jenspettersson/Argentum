@@ -41,7 +41,6 @@ namespace Argentum.Core
 
                     currentInterfaces.Add(@interface);
                 }
-                
             }
 
             return false;

@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Argentum.Core.Tests
 {
-    public class CommandProcessorTests : IUseFixture<ContainerFixture>
+    public class DefaultCommandProcessorTests : IUseFixture<ContainerFixture>
     {
         [Fact]
         public void Should_process_registered_command()

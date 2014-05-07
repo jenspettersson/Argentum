@@ -30,6 +30,16 @@ namespace Argentum.Core.Tests
         }
 
         [Fact]
+        public void Should_register_all_event_handlers_from_given_assembly()
+        {
+            var registrator = new GenericRegistrator();
+            registrator.RegisterFrom(typeof(TestEventHandler).Assembly, typeof(IHandleEvent<>));
+
+            var eventHandler = TinyIoCContainer.Current.Resolve<IHandleEvent<TestEvent>>();
+            eventHandler.GetType().Should().Be<TestEventHandler>();
+        }
+
+        [Fact]
         public void Should_throw_if_trying_to_register_multiple_implementations_when_not_allowed()
         {
             var registrator = new GenericRegistrator();

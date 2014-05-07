@@ -4,7 +4,7 @@ using TinyIoC;
 
 namespace Argentum.Core.Tests
 {
-    public class QueryProcessorTests : IUseFixture<ContainerFixture>
+    public class DefaultQueryProcessorTests : IUseFixture<ContainerFixture>
     {
         [Fact]
         public void Should_process_registered_query()

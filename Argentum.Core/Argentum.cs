@@ -5,6 +5,7 @@ namespace Argentum.Core
 {
     public interface IArgentum
     {
+        void Raise(IEvent evt);
         void Process(ICommand command);
         TResult Process<TResult>(IQuery<TResult> query);
     }
@@ -19,17 +20,25 @@ namespace Argentum.Core
             var registrator = new GenericRegistrator();
             registrator.RegisterFrom(callingAssembly, typeof(IHandleCommand<>));
             registrator.RegisterFrom(callingAssembly, typeof(IHandleQuery<,>));
+            registrator.RegisterFrom(callingAssembly, typeof(IHandleEvent<>), allowMultipleImplementations: true);
 
-            return new Argentum(new DefaultCommandProcessor(), new DefaultQueryProcessor());
+            return new Argentum(new DefaultCommandProcessor(), new DefaultQueryProcessor(), new DefaultEventRaiser());
         }
 
         private readonly IProcessCommand _commandProcessor;
         private readonly IProcessQuery _queryProcessor;
+        private readonly IRaiseEvent _eventRaiser;
 
-        public Argentum(IProcessCommand commandProcessor, IProcessQuery queryProcessor)
+        public Argentum(IProcessCommand commandProcessor, IProcessQuery queryProcessor, IRaiseEvent eventRaiser)
         {
             _commandProcessor = commandProcessor;
             _queryProcessor = queryProcessor;
+            _eventRaiser = eventRaiser;
+        }
+
+        public void Raise(IEvent evt)
+        {
+            _eventRaiser.Raise(evt);
         }
 
         public void Process(ICommand command)

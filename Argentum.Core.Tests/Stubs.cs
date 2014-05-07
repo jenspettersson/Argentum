@@ -34,6 +34,19 @@
         }
     }
 
+
+    public class TestEvent : IEvent { }
+
+    public class TestEventHandler : IHandleEvent<TestEvent>
+    {
+        public bool WasHandled { get; set; }
+
+        public void HandleEvent(TestEvent evt)
+        {
+            WasHandled = true;
+        }
+    }
+
     public interface IInterface {}
 
     public class ImplementationOne : IInterface{}

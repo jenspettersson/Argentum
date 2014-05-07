@@ -38,6 +38,9 @@
     <Compile Include="BookableSeat.cs" />
     <Compile Include="BookableSeatStatus.cs" />
     <Compile Include="BookableShow.cs" />
+    <Compile Include="AggregateBase.cs" />
+    <Compile Include="Application\Customers\CreateCustomer.cs" />
+    <Compile Include="IState.cs" />
     <Compile Include="Booking.cs" />
     <Compile Include="Cinema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -45,6 +48,14 @@
     <Compile Include="ScreenLayout.cs" />
     <Compile Include="Seat.cs" />
     <Compile Include="Show.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="Domain\Customer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Argentum.Core\Argentum.Core.csproj">
+      <Project>{0783fc8f-7fc9-4001-accc-10dd8779f3a8}</Project>
+      <Name>Argentum.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

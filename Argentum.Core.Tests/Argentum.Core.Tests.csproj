@@ -44,10 +44,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultEventRaiserTests.cs" />
     <Compile Include="GenericRegistratorTests.cs" />
-    <Compile Include="CommandProcessorTests.cs" />
+    <Compile Include="DefaultCommandProcessorTests.cs" />
     <Compile Include="ContainerFixture.cs" />
-    <Compile Include="QueryProcessorTests.cs" />
+    <Compile Include="DefaultQueryProcessorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stubs.cs" />
   </ItemGroup>
