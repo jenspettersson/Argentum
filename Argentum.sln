@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverScreen", "Sample\Silv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverScreen.Tests", "Sample\SilverScreen.Tests\SilverScreen.Tests.csproj", "{0A3DD916-B9EC-4EFF-B408-83DC08386154}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverScreen.Runner", "Sample\SilverScreen.Runner\SilverScreen.Runner.csproj", "{9B4BCB05-F5A8-42E9-BD12-E8EE6A8C4CB4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,10 +40,6 @@ Global
 		{0A3DD916-B9EC-4EFF-B408-83DC08386154}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A3DD916-B9EC-4EFF-B408-83DC08386154}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A3DD916-B9EC-4EFF-B408-83DC08386154}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B4BCB05-F5A8-42E9-BD12-E8EE6A8C4CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B4BCB05-F5A8-42E9-BD12-E8EE6A8C4CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B4BCB05-F5A8-42E9-BD12-E8EE6A8C4CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B4BCB05-F5A8-42E9-BD12-E8EE6A8C4CB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +47,5 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{28AB8A81-A01B-4BCA-A610-710D5C3BD327} = {682F17A5-BA83-4AE1-97C8-5478C85988B6}
 		{0A3DD916-B9EC-4EFF-B408-83DC08386154} = {682F17A5-BA83-4AE1-97C8-5478C85988B6}
-		{9B4BCB05-F5A8-42E9-BD12-E8EE6A8C4CB4} = {682F17A5-BA83-4AE1-97C8-5478C85988B6}
 	EndGlobalSection
 EndGlobal
