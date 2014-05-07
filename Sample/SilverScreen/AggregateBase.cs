@@ -1,26 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Argentum.Core;
 
 namespace SilverScreen
 {
-    public abstract class AggregateBase<TState> where TState : IState, new()
+    public abstract class AggregateBase<TState> : IAggregate where TState : IState, new()
     {
+        public Guid Id { get { return State.Id; } }
+        public IEnumerable<IEvent> GetUncommittedEvents()
+        {
+            return _changes;
+        }
+
         protected TState State;
         protected AggregateBase()
         {
             State = new TState();
         }
+
         protected AggregateBase(TState state)
         {
             State = state;
         }
 
-        public IList<IEvent> Changes = new List<IEvent>();
+        private readonly IList<IEvent> _changes = new List<IEvent>();
 
         public void Apply(IEvent evt)
         {
             State.Mutate(evt);
-            Changes.Add(evt);
+            _changes.Add(evt);
         }
     }
 }

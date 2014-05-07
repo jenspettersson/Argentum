@@ -46,9 +46,13 @@
     <Compile Include="Domain\BookableSeatStatus.cs" />
     <Compile Include="Domain\BookableShow.cs" />
     <Compile Include="AggregateBase.cs" />
+<<<<<<< HEAD
     <Compile Include="Application.Customers\CreateCustomer.cs" />
+=======
+    <Compile Include="Application\Customers\CreateCustomer.cs" />
     <Compile Include="IAggregate.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
+>>>>>>> Spikes
     <Compile Include="IState.cs" />
     <Compile Include="Domain\Booking.cs" />
     <Compile Include="Domain\Cinema.cs" />

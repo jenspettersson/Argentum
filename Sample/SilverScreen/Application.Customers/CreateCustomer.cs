@@ -19,7 +19,15 @@ namespace SilverScreen.Application.Customers
     {
         public void HandleCommand(CreateCustomer command)
         {
-            var customer = Customer.Create(command.Name, command.Adress);
+            Customer.Create(command.Name, command.Adress);
+        }
+    }
+
+    public class CustomerCreatedHandler : IHandleEvent<CustomerCreated>
+    {
+        public void HandleEvent(CustomerCreated evt)
+        {
+            
         }
     }
 }

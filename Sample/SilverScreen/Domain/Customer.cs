@@ -1,4 +1,5 @@
-﻿using Argentum.Core;
+﻿using System;
+using Argentum.Core;
 
 namespace SilverScreen.Domain
 {
@@ -6,14 +7,14 @@ namespace SilverScreen.Domain
     {
         public Customer(CustomerState state) : base(state) { }
 
-        private Customer(string name, string adress)
+        private Customer(Guid id, string name, string adress)
         {
-            Apply(new CustomerCreated(name, adress));
+            Apply(new CustomerCreated(id, name, adress));
         }
 
         public static Customer Create(string name, string adress)
         {
-            return new Customer(name, adress);
+            return new Customer(Guid.NewGuid(), name, adress);
         }
         
         public void ChangeName(string name)
@@ -49,11 +50,13 @@ namespace SilverScreen.Domain
 
     public class CustomerCreated : IEvent
     {
+        public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Adress { get; private set; }
 
-        public CustomerCreated(string name, string adress)
+        public CustomerCreated(Guid id, string name, string adress)
         {
+            Id = id;
             Name = name;
             Adress = adress;
         }
