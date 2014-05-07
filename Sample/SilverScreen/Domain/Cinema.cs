@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SilverScreen
+namespace SilverScreen.Domain
 {
 	public class Cinema
 	{

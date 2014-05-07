@@ -1,4 +1,4 @@
-﻿namespace SilverScreen
+﻿namespace SilverScreen.Domain
 {
 	public class ScreenLayout
 	{
