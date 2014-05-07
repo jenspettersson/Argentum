@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{682F17
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverScreen", "Sample\SilverScreen\SilverScreen.csproj", "{28AB8A81-A01B-4BCA-A610-710D5C3BD327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverScreen.Tests", "SilverScreen.Tests\SilverScreen.Tests.csproj", "{0A3DD916-B9EC-4EFF-B408-83DC08386154}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilverScreen.Tests", "Sample\SilverScreen.Tests\SilverScreen.Tests.csproj", "{0A3DD916-B9EC-4EFF-B408-83DC08386154}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

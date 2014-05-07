@@ -43,7 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sample\SilverScreen\SilverScreen.csproj">
+    <ProjectReference Include="..\SilverScreen\SilverScreen.csproj">
       <Project>{28ab8a81-a01b-4bca-a610-710d5c3bd327}</Project>
       <Name>SilverScreen</Name>
     </ProjectReference>
