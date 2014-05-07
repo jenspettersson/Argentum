@@ -1,4 +1,6 @@
-﻿namespace UMDB
+﻿using System;
+
+namespace UMDB
 {
 	public interface IDomainEventHandler<in TEvent> where TEvent : IDomainEvent
 	{
@@ -7,11 +9,16 @@
 
 	public interface IDomainEvent
 	{
-
+	    Guid Id { get; }
 	}
-
-	public class MovieCreated : IDomainEvent
-	{
-
-	}
+    public class DomainEvent : IDomainEvent
+    {
+        public Guid Id { get; private set; }
+        
+        public DomainEvent()
+        {
+            Id = Guid.NewGuid();
+        }
+    }
+	
 }
