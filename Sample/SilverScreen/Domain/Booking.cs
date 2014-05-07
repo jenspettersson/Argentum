@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace SilverScreen.Domain
 {
-	public class Booking
+	public class Booking : AggregateBase<BookingState>
 	{
-		private readonly List<Seat> _bookedSeats = new List<Seat>();
+		public Booking(BookingState state) : base(state) { }
+	}
 
-		public Guid BookableShowId { get; private set; }
+	public class BookingState : State
+	{
+		public Guid BookableShowId { get; set; }
 
-		public IEnumerable<Seat> BookedSeats
-		{
-			get { return _bookedSeats; }
-		}
+		public List<Seat> BookedSeats { get; set; }
 	}
 }

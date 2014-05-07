@@ -2,13 +2,13 @@
 
 namespace SilverScreen.Domain
 {
-	public class Cinema
+	public class Cinema : AggregateBase<CinemaState>
 	{
-		private readonly List<Screen> _screens = new List<Screen>();
+		public Cinema(CinemaState state) : base(state) { }
+	}
 
-		public IEnumerable<Screen> Screens
-		{
-			get { return _screens; }
-		}
+	public class CinemaState : State
+	{
+		public List<Screen> Screens { get; set; }
 	}
 }

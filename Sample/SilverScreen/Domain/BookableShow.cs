@@ -3,14 +3,17 @@ using System.Collections.Generic;
 
 namespace SilverScreen.Domain
 {
-	public class BookableShow
+	public class BookableShow : AggregateBase<BookableShowState>
 	{
-		private readonly List<BookableSeat> _seats = new List<BookableSeat>(); 
+		public BookableShow(BookableShowState state) : base(state) { }
+	}
 
-		public Guid ScreenId { get; private set; }
+	public class BookableShowState : State
+	{
+		public Guid ScreenId { get; set; }
 
-		public DateTime ShowTime { get; private set; }
+		public DateTime ShowTime { get; set; }
 
-		public IEnumerable<BookableSeat> Seats{get { return _seats; }} 
+		public List<BookableSeat> Seats { get; set; } 
 	}
 }
