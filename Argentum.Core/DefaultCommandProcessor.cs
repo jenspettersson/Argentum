@@ -13,5 +13,15 @@ namespace Argentum.Core
 
             handler.HandleCommand((dynamic)command);
 		}
+
+	    public void Commit()
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    public void Rollback()
+	    {
+	        throw new NotImplementedException();
+	    }
 	}
 }

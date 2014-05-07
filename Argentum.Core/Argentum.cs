@@ -22,7 +22,7 @@ namespace Argentum.Core
             registrator.RegisterFrom(callingAssembly, typeof(IHandleQuery<,>));
             registrator.RegisterFrom(callingAssembly, typeof(IHandleEvent<>), allowMultipleImplementations: true);
 
-            return new Argentum(new DefaultCommandProcessor(), new DefaultQueryProcessor(), new DefaultEventRaiser());
+            return new Argentum(new DirectBus(), new DefaultQueryProcessor(), new DefaultEventRaiser());
         }
 
         private readonly IProcessCommand _commandProcessor;
@@ -44,6 +44,8 @@ namespace Argentum.Core
         public void Process(ICommand command)
         {
             _commandProcessor.Process(command);
+
+            _commandProcessor.Commit();
         }
 
         public TResult Process<TResult>(IQuery<TResult> query)
