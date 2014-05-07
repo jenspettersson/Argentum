@@ -9,10 +9,10 @@ namespace SilverScreen.Domain
 
 		private Cinema(string name)
         {
-            Apply(new CinemaCreated(name));
+            Apply(new CinemaAdded(name));
         }
 
-		public static Cinema Create(string name, string adress)
+		public static Cinema Add(string name)
         {
 			return new Cinema(name);
         }
@@ -24,17 +24,17 @@ namespace SilverScreen.Domain
 
 		public List<Screen> Screens { get; set; }
 
-		public void When(CinemaCreated evt)
+		public void When(CinemaAdded evt)
 		{
 			Name = evt.Name;
 		}
 	}
 
-	public class CinemaCreated : IEvent
+	public class CinemaAdded : IEvent
 	{
 		public string Name { get; private set; }
 
-		public CinemaCreated(string name)
+		public CinemaAdded(string name)
 		{
 			Name = name;
 		}

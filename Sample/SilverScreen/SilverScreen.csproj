@@ -35,6 +35,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\AddCinemaHandler.cs" />
+    <Compile Include="Application\AddCinema.cs" />
     <Compile Include="Domain\BookableSeat.cs" />
     <Compile Include="Domain\BookableSeatStatus.cs" />
     <Compile Include="Domain\BookableShow.cs" />
