@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using SilverScreen.Application;
+using SilverScreen.Application.Cinema;
 using Xunit;
 
-namespace SilverScreen.Tests.Application
+namespace SilverScreen.Tests.Application.CinemaTests
 {
 	public class When_creating_a_cinema
 	{

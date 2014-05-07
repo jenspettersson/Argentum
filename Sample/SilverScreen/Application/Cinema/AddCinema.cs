@@ -1,6 +1,6 @@
 ﻿using Argentum.Core;
 
-namespace SilverScreen.Application
+namespace SilverScreen.Application.Cinema
 {
     public class AddCinema: ICommand
     {

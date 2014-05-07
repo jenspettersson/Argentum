@@ -1,14 +1,12 @@
 ﻿using Argentum.Core;
-using SilverScreen.Domain;
-using SilverScreen.Domain.Cinema;
 
-namespace SilverScreen.Application
+namespace SilverScreen.Application.Cinema
 {
 	public class AddCinemaHandler : IHandleCommand<AddCinema>
 	{
 		public void HandleCommand(AddCinema command)
 		{
-			var cinema = Cinema.Add(command.Name);
+			var cinema = Domain.Cinema.Cinema.Add(command.Name);
 		}
 	}
 }

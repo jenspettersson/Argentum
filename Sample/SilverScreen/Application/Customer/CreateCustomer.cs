@@ -1,7 +1,7 @@
 ﻿using Argentum.Core;
 using SilverScreen.Domain;
 
-namespace SilverScreen.Application.Customers
+namespace SilverScreen.Application.Customer
 {
     public class CreateCustomer : ICommand
     {
@@ -19,7 +19,7 @@ namespace SilverScreen.Application.Customers
     {
         public void HandleCommand(CreateCustomer command)
         {
-            Customer.Create(command.Name, command.Adress);
+            Domain.Customer.Create(command.Name, command.Adress);
         }
     }
 
