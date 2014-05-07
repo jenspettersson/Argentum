@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Argentum.Core;
 
 namespace SilverScreen.Domain
@@ -7,14 +8,14 @@ namespace SilverScreen.Domain
 	{
 		public Cinema(CinemaState state) : base(state) { }
 
-		private Cinema(string name)
+		private Cinema(Guid id, string name)
         {
-            Apply(new CinemaAdded(name));
+            Apply(new CinemaAdded(id, name));
         }
 
 		public static Cinema Add(string name)
         {
-			return new Cinema(name);
+			return new Cinema(Guid.NewGuid(), name);
         }
 	}
 
@@ -26,16 +27,20 @@ namespace SilverScreen.Domain
 
 		public void When(CinemaAdded evt)
 		{
+			Id = evt.Id;
 			Name = evt.Name;
 		}
 	}
 
 	public class CinemaAdded : IEvent
 	{
+		public Guid Id { get; private set; }
+
 		public string Name { get; private set; }
 
-		public CinemaAdded(string name)
+		public CinemaAdded(Guid id, string name)
 		{
+			Id = id;
 			Name = name;
 		}
 	}
